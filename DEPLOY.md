@@ -8,7 +8,7 @@
 ## 步骤 2: 连接本地仓库到 GitHub
 
 ```bash
-cd /Users/a2333/tgnl-home/tgnl-admin/nlbot-vitepress
+cd /Users/a2333/tgnl-home/tgnl-admin/nlbot-vitepress/nlbot-vitepress
 
 # 添加远程仓库（替换 YOUR_USERNAME 为你的 GitHub 用户名）
 git remote add origin https://github.com/YOUR_USERNAME/nlbot-vitepress.git
@@ -23,14 +23,30 @@ git push -u origin main
 ## 步骤 3: 配置阿里云 Pages
 
 1. 登录阿里云控制台
-2. 进入 Pages 服务
-3. 创建新站点
-4. 配置如下：
+2. 进入 Pages 服务（边缘安全加速 ESA → 边缘计算 → 函数和 Pages）
+3. 创建新站点或编辑现有站点
+4. **重要配置**：
    - **源仓库**: 选择你的 GitHub 仓库 `nlbot-vitepress`
    - **构建命令**: `npm install && npm run build`
-   - **输出目录**: `.vitepress/dist`
+   - **输出目录**: `docs/.vitepress/dist`
    - **Node 版本**: 18 或更高
 5. 保存并部署
+
+## 关键配置说明
+
+### 输出目录
+
+VitePress 默认输出到 `docs/.vitepress/dist`，所以阿里云 Pages 的输出目录必须设置为：
+```
+docs/.vitepress/dist
+```
+
+### 构建命令
+
+标准构建命令：
+```bash
+npm install && npm run build
+```
 
 ## 步骤 4: 更新配置（如果需要）
 
@@ -42,6 +58,22 @@ export default defineConfig({
   // ...
 })
 ```
+
+## 故障排查
+
+### 构建失败：找不到 assets 和 function js 文件
+
+**问题**：阿里云 Pages 报错 "Both assets and function js file are not found"
+
+**解决**：
+1. 确认输出目录设置为：`docs/.vitepress/dist`
+2. 确认构建命令正确：`npm install && npm run build`
+3. 检查构建日志，确认构建成功
+4. 如果还是失败，尝试在构建命令后添加复制步骤：
+   ```bash
+   npm install && npm run build && cp -r docs/.vitepress/dist/* dist/ 2>/dev/null || true
+   ```
+   并将输出目录改为：`dist`
 
 ## 后续更新
 
