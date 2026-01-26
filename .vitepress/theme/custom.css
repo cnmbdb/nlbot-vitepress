@@ -161,6 +161,69 @@
   border-color: rgba(82, 82, 89, 0.5);
 }
 
+/* 版本选择器样式 */
+.version-selector {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 16px;
+}
+
+.version-select {
+  background: transparent;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 6px;
+  padding: 4px 8px;
+  font-size: 14px;
+  color: var(--vp-c-text-1);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.version-select:hover {
+  border-color: var(--vp-c-brand);
+  background: var(--vp-c-bg-soft);
+}
+
+.dark .version-select {
+  border-color: rgba(82, 82, 89, 0.32);
+}
+
+.dark .version-select:hover {
+  border-color: var(--vp-c-brand);
+  background: rgba(82, 82, 89, 0.2);
+}
+
+/* 语言选择器样式 */
+.language-selector {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: 16px;
+}
+
+.lang-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  color: var(--vp-c-text-1);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.lang-link:hover {
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-brand);
+}
+
+.dark .lang-link:hover {
+  background: rgba(82, 82, 89, 0.2);
+}
+
 /* Hero 区域布局 - 完全匹配官网 */
 .VPHero {
   padding: 96px 24px 64px;
@@ -216,6 +279,11 @@
   
   .VPFeatures {
     grid-template-columns: 1fr;
+  }
+  
+  .version-selector,
+  .language-selector {
+    margin-left: 8px;
   }
 }
 
