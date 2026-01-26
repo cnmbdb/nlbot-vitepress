@@ -30,6 +30,7 @@ git push -u origin main
    - **构建命令**: `npm install && npm run build`
    - **输出目录**: `docs/.vitepress/dist`
    - **Node 版本**: 18 或更高
+   - **配置文件**: 项目根目录已有 `esa.jsonc` 配置文件（包含路由重写规则）
 5. 保存并部署
 
 ## 关键配置说明

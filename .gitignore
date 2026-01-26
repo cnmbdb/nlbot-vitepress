@@ -1,7 +1,7 @@
 node_modules
-dist
 .DS_Store
 *.log
 .vitepress/cache
 .vitepress/dist
 docs/.vitepress/dist
+dist

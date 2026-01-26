@@ -1,5 +1,11 @@
 {
   "assets": {
     "directory": "docs/.vitepress/dist/assets"
-  }
+  },
+  "rewrite": [
+    {
+      "from": "/*",
+      "to": "/index.html"
+    }
+  ]
 }
