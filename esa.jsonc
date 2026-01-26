@@ -1,6 +1,6 @@
 {
   "assets": {
-    "directory": "docs/.vitepress/dist/assets"
+    "directory": ".output/assets"
   },
   "rewrite": [
     {
