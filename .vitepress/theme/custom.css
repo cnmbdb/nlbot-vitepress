@@ -161,11 +161,53 @@
   border-color: rgba(82, 82, 89, 0.5);
 }
 
+/* 导航栏额外内容容器 - 强制显示 */
+.nav-extra-wrapper {
+  display: flex !important;
+  align-items: center !important;
+  gap: 16px !important;
+  margin-left: 16px !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  position: relative !important;
+  z-index: 999 !important;
+  height: auto !important;
+  width: auto !important;
+  flex-shrink: 0 !important;
+}
+
+/* 确保在导航栏中显示 */
+.VPNavBar .nav-extra-wrapper,
+.VPNavBarContent .nav-extra-wrapper,
+.VPNavBar .content .nav-extra-wrapper,
+header .nav-extra-wrapper,
+nav .nav-extra-wrapper {
+  display: flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* 确保版本选择器和语言选择器可见 */
+.version-selector,
+.language-selector {
+  display: inline-flex !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+
 /* 版本选择器样式 */
 .version-selector {
   display: inline-flex;
   align-items: center;
-  margin-left: 16px;
+  gap: 4px;
+}
+
+.version-text {
+  font-size: 14px;
+  color: var(--vp-c-text-1);
+  font-weight: 500;
+  margin-right: 4px;
 }
 
 .version-select {
@@ -190,6 +232,41 @@
 
 .dark .version-select:hover {
   border-color: var(--vp-c-brand);
+  background: rgba(82, 82, 89, 0.2);
+}
+
+/* 语言选择器样式 */
+.language-selector {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.lang-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 6px;
+  color: var(--vp-c-text-1);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s;
+}
+
+.lang-link:hover {
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-brand);
+}
+
+.lang-link.active {
+  background: var(--vp-c-bg-soft);
+  color: var(--vp-c-brand);
+}
+
+.dark .lang-link:hover {
   background: rgba(82, 82, 89, 0.2);
 }
 

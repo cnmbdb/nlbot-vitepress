@@ -1,0 +1,116 @@
+.VPHomeHero {
+  position: relative;
+  padding: 96px 0;
+  /* 官网亮色效果：整体白底，光晕集中在卡片附近 */
+  background: #ffffff;
+  overflow: hidden;
+}
+
+/* 主题主色（Brand Color）：按你给的图3荧光绿色 */
+:root {
+  --vp-c-brand-1: #00d26a;
+  --vp-c-brand-2: #00c062;
+  --vp-c-brand-3: #00a855;
+}
+
+.dark {
+  --vp-c-brand-1: #00d26a;
+  --vp-c-brand-2: #00c062;
+  --vp-c-brand-3: #00a855;
+}
+
+/* 首页 Hero 大标题颜色：强制使用主题绿 */
+.VPHomeHero .name,
+.dark .VPHomeHero .name {
+  color: var(--vp-c-brand-1);
+}
+
+/* 主按钮使用主题绿背景 */
+.VPHomeHero .actions .VPButton.brand {
+  background-color: var(--vp-c-brand-1);
+  border-color: transparent;
+  color: #ffffff;
+}
+
+.VPHomeHero .actions .VPButton.brand:hover {
+  background-color: var(--vp-c-brand-2);
+}
+
+.dark .VPHomeHero {
+  /* 与整体暗色背景保持一致 */
+  background: var(--vp-c-bg);
+  color: #e5e7eb;
+}
+
+.dark .VPHomeHero .name,
+.dark .VPHomeHero .text,
+.dark .VPHomeHero .tagline {
+  color: #e5e7eb;
+}
+
+.dark .VPHomeHero .actions .VPButton {
+  color: #e5e7eb;
+  border-color: rgba(255, 255, 255, 0.3);
+}
+
+.dark .VPHomeHero .actions .VPButton.brand {
+  color: #0f172a;
+  background-color: #e5e7eb;
+  border-color: #e5e7eb;
+}
+
+.VPHomeHero .container {
+  align-items: center;
+  gap: 72px;
+}
+
+.VPHomeHero .main {
+  max-width: 520px;
+}
+
+.VPHomeHero .text {
+  font-size: 2.9rem;
+}
+
+.VPHomeHero .tagline {
+  font-size: 1.12rem;
+}
+
+.VPHomeHero .image {
+  position: relative;
+  max-width: 520px;
+  /* 使用位移更直观地控制卡片位置 */
+  margin-right: 0;
+  margin-top: -12px;
+}
+
+.VPHomeHero .image::before {
+  content: '';
+  position: absolute;
+  /* 光晕区域更集中在卡片周围，类似官网截图 */
+  inset: -60px -80px -60px -80px;
+  z-index: 0;
+  /* 关闭蓝/粉色氛围光 */
+  background: transparent;
+  filter: none;
+  transform: none;
+  pointer-events: none;
+}
+
+.VPHomeHero .image img {
+  display: block;
+  border-radius: 36px;
+  /* 图片自带底部投影像素：通过裁切去掉“外阴影” */
+  clip-path: inset(2% 2% 1.5% 2% round 36px);
+  position: relative;
+  z-index: 1;
+  /* 水平位置向左 300px，向下移动一些，并放大图片 */
+  transform: translate(-300px, 16px) scale(1.18);
+  box-shadow: none;
+  filter: none;
+}
+
+.VPFeatures {
+  padding-bottom: 96px;
+}
+

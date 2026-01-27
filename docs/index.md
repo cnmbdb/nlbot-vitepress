@@ -2,22 +2,22 @@
 layout: home
 
 hero:
-  name: "TGNL Admin"
-  text: ""
-  tagline: Telegram Bot 管理后台完整文档系统
+  name: VitePress
+  text: 由 Vite 和 Vue 驱动的静态站点生成器
+  tagline: 将 Markdown 变成优雅的文档，只需几分钟
   image:
-    src: /logo.svg
-    alt: TGNL Admin
+    src: /logo.png
+    alt: VitePress Logo
   actions:
     - theme: brand
-      text: 什么是 TGNL Admin?
-      link: /guide/what-is-tgnl-admin
+      text: 什么是 VitePress?
+      link: https://vitejs.cn/vitepress/guide/what-is-vitepress
     - theme: alt
       text: 快速开始
-      link: /guide/getting-started
+      link: https://vitejs.cn/vitepress/guide/getting-started
     - theme: alt
       text: GitHub
-      link: https://github.com/cnmbdb/nlbot-vitepress
+      link: https://github.com/vuejs/vitepress
 
 features:
   - icon: 📝

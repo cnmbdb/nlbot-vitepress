@@ -8,7 +8,42 @@ export default defineConfig({
   
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }],
-    ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1.0' }]
+    ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1.0' }],
+    ['script', {}, `
+      (function() {
+        function injectNavComponents() {
+          if (document.querySelector('.nav-extra-wrapper')) return;
+          
+          const navBar = document.querySelector('.VPNavBarContent') || 
+                        document.querySelector('.VPNavBar') ||
+                        document.querySelector('header nav') ||
+                        document.querySelector('nav');
+          
+          if (!navBar) {
+            setTimeout(injectNavComponents, 100);
+            return;
+          }
+          
+          const wrapper = document.createElement('div');
+          wrapper.className = 'nav-extra-wrapper';
+          wrapper.style.cssText = 'display: flex !important; align-items: center !important; gap: 16px !important; margin-left: 16px !important;';
+          wrapper.innerHTML = '<div class="version-selector"><select class="version-select"><option value="1.0.0" selected>1.0.0</option><option value="0.9.0">0.9.0</option></select></div><div class="language-selector"><a href="/" class="lang-link active">文</a><a href="/en/" class="lang-link">EN</a></div>';
+          
+          navBar.appendChild(wrapper);
+          console.log('✅ [HEAD脚本] 导航栏组件已注入到:', navBar.className);
+        }
+        
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', injectNavComponents);
+        } else {
+          injectNavComponents();
+        }
+        
+        setTimeout(injectNavComponents, 500);
+        setTimeout(injectNavComponents, 1000);
+        setTimeout(injectNavComponents, 2000);
+      })();
+    `]
   ],
 
   // 多语言配置
