@@ -20,7 +20,8 @@ export default defineConfig({
         text: 'Vitejs中文网',
         link: 'https://vitejs.cn/'
       }
-    ]
+    ],
+    search: { provider: 'local' }
   }
 })
 
