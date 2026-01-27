@@ -78,10 +78,8 @@
 
 .VPHomeHero .image {
   position: relative;
-  max-width: 520px;
-  /* 使用位移更直观地控制卡片位置 */
-  margin-right: 0;
-  margin-top: -12px;
+  max-width: min(520px, 70vw); /* 桌面不超过 520px，窄屏按视口宽度收缩 */
+  margin: 0 auto;             /* 默认居中 */
 }
 
 .VPHomeHero .image::before {
@@ -99,13 +97,13 @@
 
 .VPHomeHero .image img {
   display: block;
+  width: 100%;   /* 按容器宽度自适应 */
+  height: auto;  /* 保持比例 */
   border-radius: 36px;
-  /* 图片自带底部投影像素：通过裁切去掉“外阴影” */
-  clip-path: inset(2% 2% 1.5% 2% round 36px);
+  clip-path: none;
   position: relative;
   z-index: 1;
-  /* 水平位置向左 300px，向下移动一些，并放大图片 */
-  transform: translate(-300px, 16px) scale(1.18);
+  transform: none;
   box-shadow: none;
   filter: none;
 }
@@ -117,13 +115,13 @@
 /* 移动端自适应：图片和标题居中，避免错位 */
 @media (max-width: 768px) {
   .VPHomeHero {
-    padding: 40px 16px 48px;
+    padding: 16px 16px 32px; /* 适当留一点呼吸空间 */
   }
 
   .VPHomeHero .container {
     flex-direction: column;
     align-items: center;
-    gap: 32px;
+    gap: 12px;
   }
 
   .VPHomeHero .main {
@@ -132,11 +130,11 @@
   }
 
   .VPHomeHero .text {
-    font-size: 1.8rem; /* 标题变小一点，适配手机宽度 */
+    font-size: 1.5rem; /* 再小一点，让整体更紧凑 */
   }
 
   .VPHomeHero .tagline {
-    font-size: 1rem;
+    font-size: 0.95rem;
   }
 
   .VPHomeHero .actions {
@@ -144,56 +142,17 @@
   }
 
   .VPHomeHero .image {
-    max-width: 260px;
-    margin: 0 auto;
+    max-width: 80vw;   /* 图片相对屏幕宽度自适应，手机更大一点 */
+    margin: 0 auto 0;
   }
 
   .VPHomeHero .image img {
-    transform: none;       /* 取消桌面端的偏移与放大 */
-    clip-path: inset(0);   /* 避免裁切导致的奇怪边缘 */
+    width: 100%;
+    height: auto;
+    transform: none;   /* 取消桌面偏移 */
+    clip-path: inset(0);
     border-radius: 24px;
   }
 }
 
-
-/* 移动端自适应：图片和标题居中，避免错位 */
-@media (max-width: 768px) {
-  .VPHomeHero {
-    padding: 40px 16px 48px;
-  }
-
-  .VPHomeHero .container {
-    flex-direction: column;
-    align-items: center;
-    gap: 32px;
-  }
-
-  .VPHomeHero .main {
-    max-width: 100%;
-    text-align: center;
-  }
-
-  .VPHomeHero .text {
-    font-size: 1.8rem; /* 标题变小一点，适配手机宽度 */
-  }
-
-  .VPHomeHero .tagline {
-    font-size: 1rem;
-  }
-
-  .VPHomeHero .actions {
-    justify-content: center;
-  }
-
-  .VPHomeHero .image {
-    max-width: 260px;
-    margin: 0 auto;
-  }
-
-  .VPHomeHero .image img {
-    transform: none;       /* 取消桌面端的偏移与放大 */
-    clip-path: inset(0);   /* 避免裁切导致的奇怪边缘 */
-    border-radius: 24px;
-  }
-}
 
