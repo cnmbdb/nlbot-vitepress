@@ -10,14 +10,14 @@ hero:
     alt: VitePress Logo
   actions:
     - theme: brand
-      text: 什么是 VitePress?
-      link: https://vitejs.cn/vitepress/guide/what-is-vitepress
+      text: 项目介绍
+      link: /guide/introduction
     - theme: alt
       text: 快速开始
-      link: https://vitejs.cn/vitepress/guide/getting-started
+      link: /guide/getting-started
     - theme: alt
       text: GitHub
-      link: https://github.com/vuejs/vitepress
+      link: https://github.com/cnmbdb/hf-tgnl-admin
 
 features:
   - icon: 📝

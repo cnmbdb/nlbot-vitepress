@@ -176,4 +176,24 @@
   }
 }
 
+/* Sidebar 分割线效果增强 */
+.VPSidebarItem.level-0 {
+  padding-bottom: 24px;
+}
+
+.VPSidebarItem.level-0:not(:first-child) {
+  margin-top: 24px;
+  border-top: 1px solid var(--vp-c-divider);
+  padding-top: 24px;
+}
+
+/* Sidebar 选中项高亮颜色（保持绿色） */
+.VPSidebarItem.level-1.is-active > .item > .link > .text,
+.VPSidebarItem.level-2.is-active > .item > .link > .text,
+.VPSidebarItem.level-3.is-active > .item > .link > .text,
+.VPSidebarItem.level-4.is-active > .item > .link > .text,
+.VPSidebarItem.level-5.is-active > .item > .link > .text {
+  color: var(--vp-c-brand-1) !important;
+}
+
 

@@ -61,7 +61,41 @@ export default defineConfig({
           { text: '1.3.0', link: '/' }
         ]
       }
-    ]
+    ],
+
+    // 全局大纲配置
+    outline: {
+      level: [2, 3],
+      label: '页面导航'
+    },
+
+    // 侧边栏
+    sidebar: {
+      '/guide/': [
+        {
+          text: '简介',
+          collapsed: false,
+          items: [
+            { text: '项目介绍', link: '/guide/introduction' }
+          ]
+        },
+        {
+          text: '部署指南',
+          collapsed: false,
+          items: [
+            { text: '快速开始', link: '/guide/getting-started' },
+            { text: '配置指南', link: '/guide/configuration' }
+          ]
+        },
+        {
+          text: '使用手册',
+          collapsed: false,
+          items: [
+            { text: '功能说明', link: '/guide/usage' }
+          ]
+        }
+      ]
+    }
   }
 })
 
