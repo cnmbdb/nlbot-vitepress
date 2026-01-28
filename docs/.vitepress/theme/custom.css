@@ -196,4 +196,44 @@
   color: var(--vp-c-brand-1) !important;
 }
 
+/* GitHub 按钮样式优化（Nuxt 风格绿色） */
+.vp-button-green {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 12px;
+  padding: 0 20px;
+  height: 40px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 38px;
+  color: #fff;
+  background-color: var(--vp-c-brand-1);
+  border-radius: 20px;
+  transition: background-color 0.25s, transform 0.1s;
+  text-decoration: none;
+}
+
+/* 深色模式下，文字改为黑色，增加对比度 */
+.dark .vp-button-green {
+  color: #000;
+}
+
+.vp-button-green:hover {
+  background-color: var(--vp-c-brand-2);
+  text-decoration: none;
+  /* 悬停时，浅色模式保持白色，深色模式保持黑色 */
+  color: #fff;
+  transform: translateY(-1px);
+}
+
+.dark .vp-button-green:hover {
+  color: #000;
+}
+
+.vp-button-green:active {
+  background-color: var(--vp-c-brand-3);
+  transform: translateY(0);
+}
+
 
