@@ -83,14 +83,54 @@ export default defineConfig({
               text: 'tgbot-store',
               collapsed: false,
               items: [
-                { text: 'Introduction', link: '/tgbot-store/' }
+                {
+                  text: '简介',
+                  collapsed: false,
+                  items: [
+                    { text: '项目介绍', link: '/tgbot-store/introduction' }
+                  ]
+                },
+                {
+                  text: '部署指南',
+                  collapsed: false,
+                  items: [
+                    { text: '快速开始', link: '/tgbot-store/getting-started' }
+                  ]
+                },
+                {
+                  text: '使用手册',
+                  collapsed: false,
+                  items: [
+                    { text: '功能说明', link: '/tgbot-store/usage' }
+                  ]
+                }
               ]
             },
             {
               text: 'tgbot-Ultra',
               collapsed: false,
               items: [
-                { text: 'Introduction', link: '/tgbot-Ultra/' }
+                {
+                  text: '简介',
+                  collapsed: false,
+                  items: [
+                    { text: '项目介绍', link: '/tgbot-Ultra/introduction' }
+                  ]
+                },
+                {
+                  text: '部署指南',
+                  collapsed: false,
+                  items: [
+                    { text: '快速开始', link: '/tgbot-Ultra/getting-started' }
+                  ]
+                },
+                {
+                  text: '使用手册',
+                  collapsed: false,
+                  items: [
+                    { text: '功能说明', link: '/tgbot-Ultra/usage' }
+                  ]
+                }
               ]
             }
           ]
