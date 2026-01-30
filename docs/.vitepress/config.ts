@@ -247,7 +247,12 @@ export default defineConfig({
     // 社交链接
     socialLinks: [
       { icon: 'github', link: 'https://hfz.pw' }
-    ]
+    ],
+    // 页脚配置
+    footer: {
+      message: 'Released under the MIT License.',
+      copyright: 'Copyright © 2024-present TelegramPress'
+    }
   }
 })
 
