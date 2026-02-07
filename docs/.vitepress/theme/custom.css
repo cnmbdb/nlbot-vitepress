@@ -1,6 +1,7 @@
 /* 设置页面背景色跟随主题，使下拉/回弹时的底色与页面一致 */
-html, body {
-  background-color: var(--vp-c-bg);
+html, body, #app {
+  background-color: var(--vp-c-bg) !important;
+  min-height: 100vh;
 }
 
 .VPHomeHero {
