@@ -1,202 +1,82 @@
 import { defineConfig } from 'vitepress'
 
 export default defineConfig({
-  appearance: true,
-  title: 'TGNL Admin',
+  title: 'TGNL Admin 文档',
   description: 'Telegram Bot 管理后台完整文档',
   base: '/',
   
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }],
-    ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1.0' }],
-    ['script', {}, `
-      (function() {
-        function injectNavComponents() {
-          if (document.querySelector('.nav-extra-wrapper')) return;
-          
-          const navBar = document.querySelector('.VPNavBarContent') || 
-                        document.querySelector('.VPNavBar') ||
-                        document.querySelector('header nav') ||
-                        document.querySelector('nav');
-          
-          if (!navBar) {
-            setTimeout(injectNavComponents, 100);
-            return;
-          }
-          
-          const wrapper = document.createElement('div');
-          wrapper.className = 'nav-extra-wrapper';
-          wrapper.style.cssText = 'display: flex !important; align-items: center !important; gap: 16px !important; margin-left: 16px !important;';
-          wrapper.innerHTML = '<div class="version-selector"><select class="version-select"><option value="1.0.0" selected>1.0.0</option><option value="0.9.0">0.9.0</option></select></div><div class="language-selector"><a href="/" class="lang-link active">文</a><a href="/en/" class="lang-link">EN</a></div>';
-          
-          navBar.appendChild(wrapper);
-          console.log('✅ [HEAD脚本] 导航栏组件已注入到:', navBar.className);
-        }
-        
-        if (document.readyState === 'loading') {
-          document.addEventListener('DOMContentLoaded', injectNavComponents);
-        } else {
-          injectNavComponents();
-        }
-        
-        setTimeout(injectNavComponents, 500);
-        setTimeout(injectNavComponents, 1000);
-        setTimeout(injectNavComponents, 2000);
-      })();
-    `]
+    ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1.0' }]
   ],
 
-  // 多语言配置
-  locales: {
-    root: {
-      label: '简体中文',
-      lang: 'zh-CN',
-      themeConfig: {
-        nav: [
-          { 
-            text: '指南', 
-            items: [
-              { text: '什么是 TGNL Admin?', link: '/guide/what-is-tgnl-admin' },
-              { text: '快速开始', link: '/guide/getting-started' },
-              { text: '项目介绍', link: '/guide/introduction' },
-              { text: '环境要求', link: '/guide/requirements' },
-            ]
-          },
-          { 
-            text: '参考', 
-            items: [
-              { text: '功能模块', link: '/modules/' },
-              { text: '部署指南', link: '/deployment/' },
-              { text: 'API 文档', link: '/api/' }
-            ]
-          },
-          { 
-            text: 'TGNL Admin', 
-            link: 'https://github.com/cnmbdb/tgnl-admin',
-            target: '_self'
-          }
-        ],
-        
-        sidebar: {
-          '/guide/': [
-            {
-              text: '入门指南',
-              items: [
-                { text: '什么是 TGNL Admin?', link: '/guide/what-is-tgnl-admin' },
-                { text: '快速开始', link: '/guide/getting-started' },
-                { text: '项目介绍', link: '/guide/introduction' },
-                { text: '环境要求', link: '/guide/requirements' },
-              ]
-            }
-          ],
-          '/modules/': [
-            {
-              text: '功能模块',
-              items: [
-                { text: '概览', link: '/modules/' },
-                { text: '仪表盘', link: '/modules/dashboard' },
-                { text: '机器人管理', link: '/modules/bots' },
-                { text: '用户管理', link: '/modules/users' },
-                { text: '订单管理', link: '/modules/orders' },
-                { text: '数据分析', link: '/modules/analytics' },
-                { text: '命令管理', link: '/modules/bot-commands' },
-                { text: '关键词回复', link: '/modules/keyword-replies' },
-                { text: '内联键盘', link: '/modules/inline-keyboards' },
-                { text: '键盘按钮', link: '/modules/keyboard-buttons' },
-                { text: '授权管理', link: '/modules/license' }
-              ]
-            }
-          ],
-          '/deployment/': [
-            {
-              text: '部署指南',
-              items: [
-                { text: 'Docker 部署', link: '/deployment/docker' },
-                { text: '环境配置', link: '/deployment/environment' },
-                { text: '故障排查', link: '/deployment/troubleshooting' }
-              ]
-            }
-          ],
-          '/api/': [
-            {
-              text: 'API 文档',
-              items: [
-                { text: '概览', link: '/api/' },
-                { text: '认证接口', link: '/api/auth' },
-                { text: '机器人接口', link: '/api/bots' },
-                { text: '用户接口', link: '/api/users' },
-                { text: '订单接口', link: '/api/orders' }
-              ]
-            }
-          ]
-        },
-      }
-    },
-    en: {
-      label: 'English',
-      lang: 'en',
-      link: '/en/',
-      themeConfig: {
-        nav: [
-          { 
-            text: 'Guide', 
-            items: [
-              { text: 'What is TGNL Admin?', link: '/en/guide/what-is-tgnl-admin' },
-              { text: 'Quick Start', link: '/en/guide/getting-started' },
-            ]
-          },
-          { 
-            text: 'Reference', 
-            items: [
-              { text: 'Modules', link: '/en/modules/' },
-              { text: 'Deployment', link: '/en/deployment/' },
-              { text: 'API', link: '/en/api/' }
-            ]
-          },
-          { 
-            text: 'TGNL Admin', 
-            link: 'https://github.com/cnmbdb/tgnl-admin',
-            target: '_self'
-          }
-        ],
-      }
-    }
-  },
-
   themeConfig: {
-    logo: {
-      light: '/logo.svg',
-      dark: '/logo.svg'
-    },
-    siteTitle: false,
+    logo: '/logo.png',
     
-    outline: {
-      level: [2, 3],
-      label: '页面导航'
-    },
-    
-    sidebarMenuLabel: '菜单',
-    returnToTopLabel: '返回顶部',
-    darkModeSwitchLabel: '外观',
-    lightModeSwitchTitle: '切换到浅色模式',
-    darkModeSwitchTitle: '切换到深色模式',
-
-    socialLinks: [
-      { icon: 'github', link: 'https://github.com/cnmbdb/nlbot-vitepress' }
+    nav: [
+      { text: '首页', link: '/' },
+      { text: '快速开始', link: '/guide/getting-started' },
+      { text: '功能模块', link: '/modules/' },
+      { text: '部署指南', link: '/deployment/' },
+      { text: 'API 文档', link: '/api/' }
     ],
-    
-    editLink: {
-      pattern: 'https://github.com/cnmbdb/nlbot-vitepress/edit/main/docs/:path',
-      text: '在 GitHub 上编辑此页'
+
+    sidebar: {
+      '/guide/': [
+        {
+          text: '入门指南',
+          items: [
+            { text: '快速开始', link: '/guide/getting-started' },
+            { text: '项目介绍', link: '/guide/introduction' },
+            { text: '环境要求', link: '/guide/requirements' }
+          ]
+        }
+      ],
+      '/modules/': [
+        {
+          text: '功能模块',
+          items: [
+            { text: '概览', link: '/modules/' },
+            { text: '仪表盘', link: '/modules/dashboard' },
+            { text: '机器人管理', link: '/modules/bots' },
+            { text: '用户管理', link: '/modules/users' },
+            { text: '订单管理', link: '/modules/orders' },
+            { text: '数据分析', link: '/modules/analytics' },
+            { text: '命令管理', link: '/modules/bot-commands' },
+            { text: '关键词回复', link: '/modules/keyword-replies' },
+            { text: '内联键盘', link: '/modules/inline-keyboards' },
+            { text: '键盘按钮', link: '/modules/keyboard-buttons' },
+            { text: '授权管理', link: '/modules/license' }
+          ]
+        }
+      ],
+      '/deployment/': [
+        {
+          text: '部署指南',
+          items: [
+            { text: 'Docker 部署', link: '/deployment/docker' },
+            { text: '环境配置', link: '/deployment/environment' },
+            { text: '故障排查', link: '/deployment/troubleshooting' }
+          ]
+        }
+      ],
+      '/api/': [
+        {
+          text: 'API 文档',
+          items: [
+            { text: '概览', link: '/api/' },
+            { text: '认证接口', link: '/api/auth' },
+            { text: '机器人接口', link: '/api/bots' },
+            { text: '用户接口', link: '/api/users' },
+            { text: '订单接口', link: '/api/orders' }
+          ]
+        }
+      ]
     },
-    
-    lastUpdated: {
-      text: '最后更新于',
-      formatOptions: {
-        dateStyle: 'short',
-        timeStyle: 'medium'
-      }
-    },
+
+  socialLinks: [
+    { icon: 'github', link: 'https://github.com/yourusername/nlbot-vitepress' }
+  ],
 
     footer: {
       message: '基于 VitePress 构建',
@@ -204,24 +84,7 @@ export default defineConfig({
     },
 
     search: {
-      provider: 'local',
-      options: {
-        translations: {
-          button: {
-            buttonText: '搜索文档',
-            buttonAriaLabel: '搜索文档'
-          },
-          modal: {
-            noResultsText: '无法找到相关结果',
-            resetButtonTitle: '清除查询条件',
-            footer: {
-              selectText: '选择',
-              navigateText: '切换',
-              closeText: '关闭'
-            }
-          }
-        }
-      }
+      provider: 'local'
     }
   }
 })
