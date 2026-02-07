@@ -1,3 +1,10 @@
+/* 禁止页面整体橡皮筋效果，防止下拉露出底色 */
+html, body {
+  overscroll-behavior: none;
+  /* 强制背景色，防止露出浏览器默认底色 */
+  background-color: var(--vp-c-bg);
+}
+
 .VPHomeHero {
   position: relative;
   padding: 96px 0;
