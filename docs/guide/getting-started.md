@@ -30,6 +30,30 @@ head:
 
 ## 部署步骤
 
+<div class="video-container">
+  <iframe src="//player.bilibili.com/player.html?bvid=BV1wfrVB1EQ2&page=1&high_quality=1&danmaku=0" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true"> </iframe>
+</div>
+
+<style>
+.video-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+  height: 0;
+  margin: 24px 0;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+</style>
+
 ### 1. 准备服务器和安装宝塔 (可选)
 
 如果您习惯使用图形化面板，可以安装宝塔面板（建议使用纯净版）。
