@@ -12,58 +12,77 @@ lastUpdated: true
 
 本指南将帮助您快速在服务器上部署 TGPro Admin 系统。
 
-## <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="title-icon"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg> 环境要求
+## <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="title-icon"><rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect><rect x="9" y="9" width="6" height="6"></rect><line x1="9" y1="1" x2="9" y2="4"></line><line x1="15" y1="1" x2="15" y2="4"></line><line x1="9" y1="20" x2="9" y2="23"></line><line x1="15" y1="20" x2="15" y2="23"></line><line x1="20" y1="9" x2="23" y2="9"></line><line x1="20" y1="14" x2="23" y2="14"></line><line x1="1" y1="9" x2="4" y2="9"></line><line x1="1" y1="14" x2="4" y2="14"></line></svg> 环境准备
 
-在开始部署之前，请确保您的服务器满足以下最低要求：
-
-- **操作系统**: Linux (推荐 Ubuntu 20.04+)
-- **容器环境**:
-  - Docker 20.10 或更高版本
-  - Docker Compose 2.0 或更高版本
-- **硬件配置**:
-  - 内存: 2GB+
-  - 磁盘: 10GB+ 可用空间
+在开始之前，请确保服务器满足以下要求：
+1.  **操作系统**：Linux (推荐 Ubuntu 20.04+ / Debian 10+)
+2.  **基础软件**：已安装宝塔面板（可选，推荐新手使用）或熟悉命令行操作。
+3.  **容器环境**：已安装 Docker 和 Docker Compose。
 
 ## <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="title-icon"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg> 部署步骤
 
-### 1. 上传项目文件
-将整个 `tgpro-admin` 目录上传至您的服务器目标位置。
+### 1. 获取源码
+
+请前往 GitHub Releases 页面下载最新版本的源码包：
+
+<a href="https://github.com/cnmbdb/hf-tgpro-admin/releases" target="_blank" class="vp-button-green">
+  <svg height="20" viewBox="0 0 16 16" version="1.1" width="20" aria-hidden="true" style="margin-right: 8px; fill: currentColor;"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+  下载源码
+</a>
+
+下载后将文件上传至服务器目录（例如 `/www/wwwroot/tgpro-admin`），并解压。
+
+::: warning 权限设置
+请务必将解压后的文件目录权限设置为 **777**，以确保容器能正常读写数据。
+```bash
+chmod -R 777 /www/wwwroot/tgpro-admin
+```
+:::
+
+### 2. 获取关键配置信息
+
+在配置环境变量前，您需要先获取以下关键信息：
+
+#### A. 波场 (Tron) API
+1.  访问 [TronGrid 官网](https://www.trongrid.io/) 注册并登录。
+2.  下载并安装 TronLink 浏览器插件。
+3.  在 TronGrid 首页关联您的钱包地址。
+4.  申请并升级 API Key（建议申请 50w 访问量的 Key）。
+
+#### B. Fragment 认证信息 (用于高级功能)
+如果您需要使用 Fragment 相关功能（如用户名拍卖、匿名号码等），需要获取 Hash 和 Cookie。
+
+1.  访问 [Fragment 官网](https://fragment.com/)。
+2.  登录您的 Telegram 和 TON 钱包。
+3.  在首页点击右上角的“会员界面”或任意交互入口。
+4.  按 `F12` 打开浏览器开发者工具，切换到 **Network (网络)** 标签页。
+5.  在页面上进行任意操作（如输入用户名 `@aaaa` 并回车搜索）。
+6.  在 Network 面板中找到任意以 `api` 开头的请求。
+7.  点击该请求，在 **Headers** 或 **Payload** 中找到并复制 `hash` 和 `cookie` 值。
 
 ### 3. 配置环境变量
-进入项目目录，复制示例配置文件并进行编辑：
+
+将项目根目录下的 `.env.example` 文件重命名为 `.env`，并编辑填入上述信息。
 
 ```bash
-cd tgpro-admin
-cp .env.example .env
-nano .env  # 或使用 vim/vi 编辑
+mv .env.example .env
+vim .env
 ```
 
-详细的配置项说明请参考 [配置指南](/tgpro-admin/configuration)。
+**重点修改项：**
+*   `BOT_TOKEN`: 您的机器人 Token。
+*   `TRON_API_KEY`: 您的波龙 API Key。
+*   `FRAGMENT_HASH`: 刚才获取的 Hash。
+*   `FRAGMENT_COOKIE`: 刚才获取的 Cookie。
 
 ### 4. 启动服务
-确认配置无误后，使用 Docker Compose 一键启动所有服务：
+
+在项目根目录下执行以下命令启动：
 
 ```bash
-docker compose up -d
+docker compose up -d --build
 ```
 
-此命令将自动拉取镜像、构建容器并在后台运行服务。
-
-## <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="title-icon"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg> 目录结构说明
-
-了解项目结构有助于您更好地维护系统：
-
-```
-tgpro-admin/
-├── .env                    # 环境配置文件（核心敏感配置）
-├── .env.example           # 配置模板文件
-├── docker-compose.yml     # Docker 容器编排配置
-├── Dockerfile             # Web 前端/后端构建文件
-├── database/
-│   └── init.sql           # 数据库初始化脚本
-└── hf-tgpro/              # 机器人核心目录
-    ├── Dockerfile         # 机器人环境构建文件
-    ├── hy.py              # 机器人主程序入口
-    ├── main               # TON 支付处理二进制程序
-    └── keyword_replies.json # 自动回复规则配置
-```
+::: tip 启动成功
+当看到所有容器状态为 `Up` 时，说明部署成功。您可以通过浏览器访问服务器 IP + 端口进入管理后台。
+:::
