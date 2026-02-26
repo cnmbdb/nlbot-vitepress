@@ -121,7 +121,8 @@ export default defineConfig({
                   text: '部署指南',
                   collapsed: false,
                   items: [
-                    { text: '快速开始', link: '/tgbot-Ultra/getting-started' }
+                    { text: '快速开始', link: '/tgbot-Ultra/getting-started' },
+                    { text: '配置指南', link: '/tgbot-Ultra/configuration' }
                   ]
                 },
                 {

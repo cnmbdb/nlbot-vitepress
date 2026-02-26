@@ -1,6 +1,6 @@
 ---
-title: 使用手册
-description: Telegram 五合一机器人功能配置手册
+title: 功能说明
+description: TGBot-Ultra 系统功能使用手册
 layout: doc
 sidebar: true
 aside: true
@@ -8,32 +8,53 @@ outline: [2, 3]
 lastUpdated: true
 ---
 
-# 使用手册
+# 功能说明
 
-## <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="title-icon"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg> 后台管理
+## <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="title-icon"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg> 管理后台
 
-部署完成后，您可以访问 `http://您的域名/admin` 进入管理后台。
+### 登录
+*   **地址**: `http://您的IP:8080/admin/login`
+*   **默认账号**: `trxadmin` 或 `admin`
+*   **默认密码**: 请查看数据库或部署说明
 
-- **默认账号**：`admin`
-- **默认密码**：`123456` (请及时修改)
+### 核心模块
 
-## <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="title-icon"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg> 功能配置
+#### 1. 机器人管理 (Telegram)
+*   **Bot 列表**: 添加、删除和管理多个 Telegram Bot。
+*   **自定义回复**: 设置关键词回复规则。
+*   **键盘菜单**: 可视化编辑 Bot 的底部菜单和内联键盘。
+*   **消息广播**: 向 Bot 用户群发通知消息。
 
-### TRX 兑换设置
-1. 进入后台 -> **兑换管理**。
-2. 设置汇率浮动比例（例如：赚取 2% 差价）。
-3. 配置资金归集钱包地址。
+#### 2. 能量业务 (Energy)
+*   **能量平台**: 对接第三方能量池，配置 API Key。
+*   **价格配置**: 设置不同时长的能量租赁价格。
+*   **订单管理**: 查看能量租赁订单状态（待支付、进行中、已完成）。
 
-### 能量租赁配置
-1. 进入后台 -> **能量管理**。
-2. 添加您的 API 供应商（如：trongas, feiyu 等）。
-3. 设置轮询策略，确保高可用。
+#### 3. 会员业务 (Premium)
+*   **商品管理**: 上架 Telegram Premium 会员商品（3个月/6个月/12个月）。
+*   **库存管理**: 管理会员赠送链接或代开库存。
 
-### 会员充值对接
-1. 进入后台 -> **会员管理**。
-2. 配置官方会员充值接口密钥。
-3. 设置前端售卖价格。
+#### 4. 商城系统 (Shop)
+*   **商品分类**: 创建虚拟商品分类。
+*   **卡密管理**: 批量导入/导出卡密 (CD-Key)。
+*   **自动发货**: 用户支付成功后自动发送卡密。
 
-## <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="title-icon"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg> 消息通知
+#### 5. 监控系统 (Monitor)
+*   **地址监控**: 添加需要监控的 TRON 钱包地址。
+*   **动账通知**: 配置资金变动通知的目标群组或频道。
 
-您可以配置机器人将重要通知（如订单成交、余额不足）发送到指定的 Telegram 群组或频道，方便团队协作管理。
+## <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="title-icon"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg> 常用运维命令
+
+```bash
+# 查看所有服务状态
+docker compose ps
+
+# 查看 Job 服务日志 (排查消息处理问题)
+docker compose logs -f job
+
+# 查看 Admin 服务日志
+docker compose logs -f admin
+
+# 重启所有服务
+docker compose restart
+```
