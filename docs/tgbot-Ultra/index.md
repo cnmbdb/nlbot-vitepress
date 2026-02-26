@@ -12,7 +12,7 @@ lastUpdated: true
 
 欢迎来到 TGBot-Ultra 文档中心。这是一个功能强大的 Telegram 机器人综合管理系统，支持能量租赁、会员订阅、虚拟商城等多种业务场景。
 
-## 📚 文档导航
+## <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="title-icon"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg> 文档导航
 
 请选择您需要了解的内容：
 

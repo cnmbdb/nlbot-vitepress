@@ -20,19 +20,19 @@ TGBot-Ultra 不仅仅是一个机器人，更是一个多功能的业务平台�
 系统采用模块化设计，您可以根据业务需求灵活启用或关闭特定功能。
 :::
 
-- **🔋 能量租赁 (Energy)**
+- **<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="list-icon"><path d="M5 18H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h3.19M15 6h2a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2h-3.19"></path><line x1="23" y1="13" x2="23" y2="11"></line><polyline points="11 6 7 12 13 12 9 18"></polyline></svg> 能量租赁 (Energy)**
     - 支持波场 (TRON) 能量自动租赁与回收。
     - 对接上游能量池，实现自动化调度。
-- **💎 会员订阅 (Premium)**
+- **<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="list-icon"><path d="M6 3h12l4 6-10 13L2 9z"></path><path d="M11 3 8 9l4 13 4-13-3-6"></path><path d="M2 9h20"></path></svg> 会员订阅 (Premium)**
     - Telegram Premium 会员代开/赠送业务。
     - 自动化订单处理与状态即时同步。
-- **🛒 虚拟商城 (Shop)**
+- **<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="list-icon"><circle cx="9" cy="21" r="1"></circle><circle cx="20" cy="21" r="1"></circle><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path></svg> 虚拟商城 (Shop)**
     - 支持卡密 (CD-Key) 自动发货。
     - 多种商品类型支持，库存自动管理。
-- **👀 链上监控 (Monitor)**
+- **<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="list-icon"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg> 链上监控 (Monitor)**
     - 实时监控指定钱包地址的 USDT/TRX 变动。
     - 交易动账即时通知，资金流向一目了然。
-- **💰 资金归集 (Collection)**
+- **<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="list-icon"><path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"></path><path d="M4 6v12c0 1.1.9 2 2 2h14v-4"></path><path d="M18 12a2 2 0 0 0-2 2c0 1.1.9 2 2 2h4v-4h-4z"></path></svg> 资金归集 (Collection)**
     - 多钱包资金自动归集系统。
     - 支持自定义归集策略与阈值。
 
