@@ -41,55 +41,96 @@ chmod -R 777 /www/wwwroot/tgbot-ultra
 
 ### 2. 配置环境变量
 
-本系统包含两个核心服务：**Admin**（后台管理）和 **Job**（任务处理），它们各自有独立的配置文件。
+系统包含两个核心服务：**Admin**（后台管理）和 **Job**（任务处理），它们共享相同的数据库和缓存层，但各自拥有独立的运行环境。
 
-#### A. Admin 服务配置
+#### <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><line x1="10" y1="9" x2="8" y2="9"></line></svg> 配置文件说明
+
+项目根目录提供 `.env.example` 作为配置模板，服务启动时会自动加载环境变量。
+
+::: tip 推荐做法
+首次配置时，建议从 `.env.example` 复制并重命名为 `.env`：
+
 ```bash
-# 进入 admin 目录
-cd admin
-# 复制配置文件
+# 在项目根目录执行
 cp .env.example .env
-# 编辑配置
-vim .env
 ```
 
-#### B. Job 服务配置
-```bash
-# 进入 job 目录
-cd ../job
-# 复制配置文件
-cp .env.example .env
-# 编辑配置
-vim .env
-```
-
-::: tip 关键配置一致性
-请确保 `admin/.env` 和 `job/.env` 中的数据库连接信息 (`DB_HOST`, `DB_PORT`, `DB_DATABASE`, `DB_USERNAME`, `DB_PASSWORD`) 和 Redis 配置保持一致。
 :::
+
+#### <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path></svg> 关键配置项说明
+
+| 配置项 | 说明 | 示例值 |
+| :--- | :--- | :--- |
+| `APP_NAME` | 应用名称 | `TGBot Ultra` |
+| `APP_URL` | 站点访问地址（需与实际域名一致） | `https://your-domain.com` |
+| `DB_HOST` | 数据库主机（Docker 内部网络） | `postgres` |
+| `DB_DATABASE` | 数据库名称 | `tgbot` |
+| `DB_USERNAME` | 数据库用户名 | `root` |
+| `DB_PASSWORD` | 数据库密码 | `your_password` |
+| `REDIS_HOST` | Redis 主机（Docker 内部网络） | `redis` |
+| `TIMEZONE` | 系统时区 | `Asia/Shanghai` |
+| `ADMIN_PORT` | 后台管理端口（宿主机映射） | `8080` |
+| `JOB_PORT` | Job 服务端口（宿主机映射） | `9501` |
 
 ### 3. 启动服务
 
-回到项目根目录（包含 `docker-compose.yml` 的目录），执行以下命令启动：
+完成配置后，在项目根目录（包含 `docker-compose.yml` 的目录）执行以下命令启动所有服务：
 
 ```bash
+# 构建并启动所有容器
 docker compose up -d --build
-```
 
-### 4. 验证部署
-
-查看容器运行状态：
-```bash
+# 查看容器运行状态
 docker compose ps
 ```
 
-如果所有容器状态均为 `Up`，则说明启动成功。
+#### 服务组件说明
 
-*   **管理后台**: `http://服务器IP:8080/admin/login`
-    *   默认账号: `trxadmin` 或 `admin`
-    *   默认密码: 请查看数据库或初始安装说明（通常为 `password` 或 `123456`，建议首次登录后修改）
+| 容器名称 | 服务说明 | 默认端口 |
+| :--- | :--- | :--- |
+| **admin** | Laravel 后台管理系统 | 8080 |
+| **job** | Hyperf 异步任务处理服务 | 9501 |
+| **postgres** | PostgreSQL 数据库 | 5432 |
+| **redis** | Redis 缓存与消息队列 | 6379 |
+| **cloudflared** | Cloudflare Tunnel 隧道服务 | - |
 
-::: info 数据库初始化
-首次启动时，系统会自动执行 `001_init.sql` 脚本初始化数据库结构（包含表结构、初始数据和视图）。如果启动后无法登录，请检查数据库是否已成功导入数据。
+---
+
+### 4. 访问系统
+
+容器启动成功后，您可以通过以下地址访问系统：
+
+<div class="access-cards">
+  <div class="access-card">
+    <div class="card-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect><line x1="3" y1="9" x2="21" y2="9"></line><line x1="9" y1="21" x2="9" y2="9"></line></svg>
+    </div>
+    <div class="card-content">
+      <h4>管理后台</h4>
+      <code>http://服务器IP:8080/admin/login</code>
+    </div>
+  </div>
+  <div class="access-card">
+    <div class="card-icon">
+      <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+    </div>
+    <div class="card-content">
+      <h4>Bot 接口</h4>
+      <code>http://服务器IP:9501</code>
+    </div>
+  </div>
+</div>
+
+::: info 默认账号
+首次访问管理后台时，请使用以下凭据登录（建议首次登录后立即修改密码）：
+- **账号**: `trxadmin` 或 `admin`
+- **密码**: `password`（或 `123456`，具体以系统提示为准）
+:::
+
+::: warning 安全提醒
+- 首次部署后请立即修改默认密码
+- 建议通过 Cloudflare Tunnel 或 Nginx 反向代理访问，避免直接暴露端口
+- 记得在服务器防火墙/安全组中放行必要端口（8080, 9501, 5432, 6379）
 :::
 
 ## <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="title-icon"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg> 激活授权
@@ -115,3 +156,52 @@ docker compose ps
 *   **标准版限制**: 每个授权码最多支持绑定 **4 个** 服务器 IP。
 *   **灵活管理**: 您可以随时在官网后台自行修改授权 IP，方便切换服务器或进行转卖。
 :::
+
+<style scoped>
+.access-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.access-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px;
+  border: 1px solid var(--vp-c-divider);
+  border-radius: 8px;
+  background: var(--vp-c-bg-soft);
+  transition: all 0.2s ease;
+}
+
+.access-card:hover {
+  border-color: var(--vp-c-brand-1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  transform: translateY(-2px);
+}
+
+.card-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  background: var(--vp-c-brand-soft);
+  color: var(--vp-c-brand-1);
+}
+
+.card-content h4 {
+  margin: 0 0 4px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--vp-c-text-1);
+}
+
+.card-content code {
+  font-size: 13px;
+  color: var(--vp-c-text-2);
+}
+</style>
