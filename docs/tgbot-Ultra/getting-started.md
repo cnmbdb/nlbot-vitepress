@@ -84,18 +84,6 @@ docker compose up -d --build
 docker compose ps
 ```
 
-#### 服务组件说明
-
-| 容器名称 | 服务说明 | 默认端口 |
-| :--- | :--- | :--- |
-| **admin** | Laravel 后台管理系统 | 8080 |
-| **job** | Hyperf 异步任务处理服务 | 9501 |
-| **postgres** | PostgreSQL 数据库 | 5432 |
-| **redis** | Redis 缓存与消息队列 | 6379 |
-| **cloudflared** | Cloudflare Tunnel 隧道服务 | - |
-
----
-
 ### 4. 访问系统
 
 容器启动成功后，您可以通过以下地址访问系统：
