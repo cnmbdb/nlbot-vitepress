@@ -100,6 +100,64 @@ vim .env
 
 您需要修改 `.env` 文件中的关键信息（如数据库密码、端口等）。同时，也需要检查 `nl-2333/config.txt` (如果有) 或相关 Bot 配置文件。
 
+::: details 如何配置 Cloudflare Turnstile（验证码）
+
+Cloudflare Turnstile 是一种隐私友好的验证码服务。
+
+**1. 获取 Site Key 和 Secret Key：**
+- 登录 [Cloudflare Dashboard](https://dash.cloudflare.com/)
+- 进入 "Security" → "Turnstile"
+- 点击 "Add a subdomain"，填写您的域名
+- 创建后获取 **Site Key** 和 **Secret Key**
+
+**2. 在 .env 中配置：**
+
+```bash
+# ================== Cloudflare Turnstile ==================
+TURNSTILE_SITE_KEY=0x4AAAAAAAxxxxxxxxxxxxxxxx
+TURNSTILE_SECRET_KEY=1x00000000xxxxxxxxxxxxxxxx
+```
+
+:::
+
+::: details 如何配置 Cloudflare Tunnel（内网穿透）
+
+Cloudflare Tunnel 允许将本地服务暴露到互联网，无需公网 IP。
+
+**1. 安装 cloudflared：**
+```bash
+curl -L https://github.com/cloudflare/cloudflared/releases/latest/download/cloudflared-linux-amd64.deb -o cloudflared.deb
+sudo dpkg -i cloudflared.deb
+```
+
+**2. 登录并创建隧道：**
+```bash
+cloudflared tunnel login
+cloudflared tunnel create tgnl-admin-tunnel
+```
+
+**3. 获取 Tunnel ID 和 Token：**
+- 创建成功后显示 **Tunnel ID**
+- 在 Cloudflare Zero Trust Dashboard → "Networks" → "Tunnels" 获取 **Token**
+
+**4. 在 .env 中配置：**
+
+```bash
+# ================== Cloudflare Tunnel ==================
+CFTUN_TUNNEL_ID=a1b2c3d4-5678-90ab-cdef-1234567890ab
+CFTUN_TOKEN=eyJhIjoiNjk5OTk5OTktOTk5OS05OTk5LTAwMDAtMDAwMD
+```
+
+**5. 配置 DNS 记录：**
+
+| Type | Name | Target | Proxy status |
+| :--- | :--- | :--- | :--- |
+| CNAME | admin | `Tunnel ID` | Proxied |
+
+::: tip 提示
+请妥善保管您的 Secret Key 和 Token，不要泄露或提交到公共代码仓库。
+:::
+
 ### 5. 启动服务
 
 使用 Docker Compose 构建并启动所有服务：
