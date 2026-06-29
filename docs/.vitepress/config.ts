@@ -1,5 +1,68 @@
 import { defineConfig } from 'vitepress'
 
+const hfzFooterNav = [
+  {
+    text: '首页',
+    items: [
+      { text: '网站首页', link: 'https://hfz.pw/home' },
+      { text: 'HF-Web', link: 'https://hfz.pw/' },
+      { text: '商城首页', link: 'https://hfz.pw/shop' }
+    ]
+  },
+  {
+    text: '产品',
+    items: [
+      { text: 'Token API', link: 'https://token.macosabc.com/' },
+      { text: 'TelegramBot', link: 'https://telegrampress.hfz.pw/' },
+      { text: 'ETS插件扩展平台', link: 'https://dujiaoka-ets.hfz.pw/' },
+      { text: '服务器 / VPS', link: 'https://cloud.hfz.pw/' }
+    ]
+  },
+  {
+    text: '教程导航',
+    items: [
+      { text: '基础教学', link: 'https://hfz.pw/' },
+      { text: '发卡网站', link: 'https://hfz.pw/' },
+      { text: '收款 / 支付程序', link: 'https://hfz.pw/' },
+      { text: 'WordPress', link: 'https://hfz.pw/' },
+      { text: 'HTML', link: 'https://hfz.pw/' },
+      { text: 'WHMCS', link: 'https://hfz.pw/' },
+      { text: 'Telegram机器人', link: 'https://hfz.pw/' },
+      { text: 'ChatGPT', link: 'https://hfz.pw/' }
+    ]
+  },
+  {
+    text: '合作',
+    items: [
+      { text: '担保合作平台', link: 'https://hfz.pw/' },
+      { text: '入驻 / 发布教程', link: 'https://hfz.pw/' },
+      { text: '克隆代理本站', link: 'https://hfz.pw/' }
+    ]
+  },
+  {
+    text: '平台入口',
+    items: [
+      { text: '自由货源平台', link: 'https://hfz.pw/' },
+      { text: '商城首页', link: 'https://store.hfz.pw/' }
+    ]
+  },
+  {
+    text: '在线联系',
+    items: [
+      { text: 'Telegram客服', link: 'https://t.me/HFTGID' }
+    ]
+  }
+]
+
+const versionNav = {
+  text: '1.3.2',
+  items: [
+    { text: '1.3.2（当前）', link: '/' },
+    { text: '1.3.1', link: '/' },
+    { text: '1.3.0', link: '/' }
+  ]
+}
+
 export default defineConfig({
   lang: 'zh-CN',
   title: 'TelegramPress',
@@ -12,14 +75,8 @@ export default defineConfig({
       lang: 'zh-CN',
       themeConfig: {
         nav: [
-          {
-            text: '1.3.2',
-            items: [
-              { text: '1.3.2（当前）', link: '/' },
-              { text: '1.3.1', link: '/' },
-              { text: '1.3.0', link: '/' }
-            ]
-          }
+          versionNav,
+          ...hfzFooterNav
         ],
         sidebar: {
           '/': [
@@ -151,7 +208,8 @@ export default defineConfig({
               { text: '1.3.1', link: '/en/' },
               { text: '1.3.0', link: '/en/' }
             ]
-          }
+          },
+          ...hfzFooterNav
         ],
         sidebar: {
           '/en/guide/': [
@@ -187,7 +245,8 @@ export default defineConfig({
       link: '/pt/',
       themeConfig: {
         nav: [
-           { text: '1.3.2', items: [{ text: '1.3.2', link: '/pt/' }] }
+           { text: '1.3.2', items: [{ text: '1.3.2', link: '/pt/' }] },
+           ...hfzFooterNav
         ],
         sidebar: {
           '/pt/guide/': [
@@ -210,7 +269,8 @@ export default defineConfig({
       link: '/ru/',
       themeConfig: {
         nav: [
-           { text: '1.3.2', items: [{ text: '1.3.2', link: '/ru/' }] }
+           { text: '1.3.2', items: [{ text: '1.3.2', link: '/ru/' }] },
+           ...hfzFooterNav
         ],
         sidebar: {
           '/ru/guide/': [
@@ -233,7 +293,8 @@ export default defineConfig({
       link: '/es/',
       themeConfig: {
         nav: [
-           { text: '1.3.2', items: [{ text: '1.3.2', link: '/es/' }] }
+           { text: '1.3.2', items: [{ text: '1.3.2', link: '/es/' }] },
+           ...hfzFooterNav
         ],
         sidebar: {
           '/es/guide/': [
@@ -256,7 +317,8 @@ export default defineConfig({
       link: '/ko/',
       themeConfig: {
         nav: [
-           { text: '1.3.2', items: [{ text: '1.3.2', link: '/ko/' }] }
+           { text: '1.3.2', items: [{ text: '1.3.2', link: '/ko/' }] },
+           ...hfzFooterNav
         ],
         sidebar: {
           '/ko/guide/': [
@@ -276,6 +338,7 @@ export default defineConfig({
   },
 
   themeConfig: {
+    siteTitle: false,
     // 顶部搜索输入框（Search ⌘K）
     search: {
       provider: 'local'
@@ -296,4 +359,3 @@ export default defineConfig({
     }
   }
 })
-
