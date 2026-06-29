@@ -338,7 +338,7 @@ export default defineConfig({
   },
 
   themeConfig: {
-    siteTitle: false,
+    siteTitle: 'TelegramPress',
     // 顶部搜索输入框（Search ⌘K）
     search: {
       provider: 'local'

@@ -25,48 +25,6 @@ html, body, #app {
   --vp-c-brand-3: #00a855;
 }
 
-/* 顶部导航居中项目标题 */
-.centered-nav-title {
-  position: fixed;
-  top: var(--vp-layout-top-height, 0px);
-  left: 50%;
-  z-index: calc(var(--vp-z-index-nav) + 1);
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  height: var(--vp-nav-height);
-  max-width: min(42vw, 360px);
-  padding: 0 16px;
-  color: var(--vp-c-text-1);
-  font-size: 18px;
-  font-weight: 700;
-  line-height: 1;
-  letter-spacing: 0;
-  text-align: center;
-  text-decoration: none;
-  transform: translateX(-50%);
-  transition: color 0.25s;
-  white-space: nowrap;
-  pointer-events: none;
-}
-
-.centered-nav-title span {
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.centered-nav-title:hover {
-  color: var(--vp-c-brand-1);
-}
-
-@media (max-width: 767px) {
-  .centered-nav-title {
-    max-width: calc(100vw - 176px);
-    padding: 0 8px;
-    font-size: 16px;
-  }
-}
-
 /* 长导航在中等屏保持汉堡折叠，避免标题和菜单互相挤压。 */
 @media (min-width: 768px) and (max-width: 1119px) {
   .VPNavBarMenu {
